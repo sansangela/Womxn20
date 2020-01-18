@@ -7,13 +7,24 @@
 // });
 const sqlite3 = require('sqlite3').verbose();
 
-let db = new sqlite3.Database(':memory:', (err) => {
+// open database in memory
+let db = new sqlite3.Database('../db/womxn.db',sqlite3.OPEN_READWRITE, (err) => {
 	if (err) {
 	  return console.error(err.message);
 	}
 	console.log('Connected to the in-memory SQlite database.');
-  });
+});
 
+db.serialize(() => {
+	db.each(`SELECT * FROM user_info WHERE user_keyword = "Basketball";`, (err, row) => {
+	  if (err) {
+		console.error(err.message);
+	  }
+	  console.log(row);
+	});
+});
+   
+// close the database connection
 db.close((err) => {
 if (err) {
 	return console.error(err.message);
