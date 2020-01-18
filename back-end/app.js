@@ -4,8 +4,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// aws
+// var aws = require('aws-sdk');
+// aws.config.update({
+//   // keys
+// 	secretAccessKey: '',
+// 	accessKeyId: '',
+// 	region: ''
+// });
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var searchBar = require('./routes/searchBar');
 
 var app = express();
 
@@ -21,6 +31,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/searchBar',searchBar);
+
+// test hello api
+app.get('/hello', function (req, res) {
+  res.send('GET request to the homepage')
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
