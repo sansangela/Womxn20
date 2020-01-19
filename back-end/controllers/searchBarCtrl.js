@@ -15,8 +15,9 @@ function filter(req,res,next) {
 		var keyword = req.query.keyword;
 
 		db.serialize(() => {
-			sql = `SELECT * FROM user_info WHERE user_keyword = '${keyword}';`;
-			db.each(sql, (err, row) => {
+			sql = `SELECT * FROM user_info WHERE user_keyword LIKE '${keyword}';`;
+			// CONTAINS
+			db.all(sql, (err, row) => {
 			if (err) {
 				console.error(err.message);
 			}
