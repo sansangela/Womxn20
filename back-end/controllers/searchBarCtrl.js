@@ -1,6 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path')
 const dbPath = path.resolve(__dirname, '../db/womxn.db')
+const fs = require('fs')
 
 function filter(req,res,next) {
 	try {
@@ -21,9 +22,26 @@ function filter(req,res,next) {
 			if (err) {
 				console.error(err.message);
 			}
-			console.log(row);
-			res.set('Content-Type', 'text/html');
-			res.status(200).send(row);
+			// console.log(row);
+
+			// // parse json
+			// var jsonObj = JSON.parse(row);
+			// console.log(jsonObj);
+			
+			// stringify JSON Object
+			var jsonContent = JSON.stringify(row);
+			console.log(jsonContent);
+			
+			fs.writeFile("./db/output.json", jsonContent, 'utf8', function (err) {
+				if (err) {
+					console.log("An error occured while writing JSON Object to File.");
+					return console.log(err);
+				}
+			
+				console.log("JSON file has been saved.");
+			});
+
+			res.status(200).json(row);
 			});
 		});
 
