@@ -41,7 +41,9 @@ function filter(req,res,next) {
 				console.log("JSON file has been saved.");
 			});
 
-			res.status(200).json(row);
+			// var json = require('/Users/sangela/Desktop/Womxn20/back-end/db/output.json');
+			// res.status(200).render('index', { title: 'Hey', data: json });
+			// res.status(200).json(row);
 			});
 		});
 
@@ -62,6 +64,10 @@ function filter(req,res,next) {
 				console.log('Close the database connection.');
 			});
 		}
+
+		var json = require('/Users/sangela/Desktop/Womxn20/back-end/db/output.json');
+		res.status(200).render('index', { title: 'Hey', data: json });
+		// res.status(200).json(row);
 }
 
 // filter();

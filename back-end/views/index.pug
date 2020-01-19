@@ -1,0 +1,14 @@
+html
+  head
+    title= title
+  body
+    table(style='width:100%', border='1')
+    tr
+      th Id
+      th Name
+      th Keyword
+    each result in data
+      tr
+        td #{result.user_id}
+        td #{result.user_name}
+        td #{result.user_keyword}
