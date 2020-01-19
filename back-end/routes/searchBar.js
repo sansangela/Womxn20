@@ -4,12 +4,11 @@ var router = express.Router();
 
 router.get('/',function(req,res,next) {
 	// change to relative path
-	res.sendfile('/Users/jiaai/Womxn20/front-end/heygaucho.html');
+	res.sendfile('/Users/sangela/Desktop/Womxn20/front-end/heygaucho.html');
 });
 
 router.get('/search',function(req,res,next) {
 	searchBarCtrl.filter(req,res,next);
-	// res.send("search");
 })
 
 module.exports = router;
