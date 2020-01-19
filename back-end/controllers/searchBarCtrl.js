@@ -29,20 +29,20 @@ function filter(req,res,next) {
 			// console.log(jsonObj);
 			
 			// stringify JSON Object
-			var jsonContent = JSON.stringify(row);
-			console.log(jsonContent);
+			// var jsonContent = JSON.stringify(row);
+			// console.log(jsonContent);
 			
-			fs.writeFile("./db/output.json", jsonContent, 'utf8', function (err) {
-				if (err) {
-					console.log("An error occured while writing JSON Object to File.");
-					return console.log(err);
-				}
+			// fs.writeFile("./db/output.json", jsonContent, 'utf8', function (err) {
+			// 	if (err) {
+			// 		console.log("An error occured while writing JSON Object to File.");
+			// 		return console.log(err);
+			// 	}
 			
-				console.log("JSON file has been saved.");
-			});
+			// 	console.log("JSON file has been saved.");
+			// });
 
 			// var json = require('/Users/sangela/Desktop/Womxn20/back-end/db/output.json');
-			// res.status(200).render('index', { title: 'Hey', data: json });
+			res.status(200).render('index', { title: 'Hey', data: row });
 			// res.status(200).json(row);
 			});
 		});
@@ -54,6 +54,10 @@ function filter(req,res,next) {
 			}
 			console.log('Close the database connection.');
 		});
+		// var json = require('/Users/sangela/Desktop/Womxn20/back-end/db/output.json');
+		// res.status(200).render('index', { title: 'Hey', data: row });
+		// res.status(200).json(row);
+
 		} catch (err) {
 			res.status(500).send('SERVER ERROR:' + err);
 				// close the database connection
@@ -65,9 +69,7 @@ function filter(req,res,next) {
 			});
 		}
 
-		var json = require('/Users/sangela/Desktop/Womxn20/back-end/db/output.json');
-		res.status(200).render('index', { title: 'Hey', data: json });
-		// res.status(200).json(row);
+		
 }
 
 // filter();
