@@ -15,13 +15,14 @@ function filter(req,res,next) {
 		var keyword = req.query.keyword;
 
 		db.serialize(() => {
-			sql = `SELECT * FROM user_info WHERE user_keyword LIKE '${keyword}';`;
-			// CONTAINS
+			sql = `SELECT * FROM user_info WHERE user_keyword_hist LIKE '%${keyword}%';`;
+			
 			db.all(sql, (err, row) => {
 			if (err) {
 				console.error(err.message);
 			}
 			console.log(row);
+			res.set('Content-Type', 'text/html');
 			res.status(200).send(row);
 			});
 		});
