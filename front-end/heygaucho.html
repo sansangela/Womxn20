@@ -10,7 +10,7 @@ img {
 	<head>
 		<title>I Gaucho Back</title>
 		<meta name="project" content="womxnhack2020">
-		<link rel="stylesheet" href="webpage.css">
+		<link rel="stylesheet" href="/Users/sangela/Desktop/Womxn20/front-end/webpage.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	</head>
 	<body>
@@ -31,10 +31,16 @@ img {
 		<!--</div>-->
 		<div class="wrap">
    		  <div class="search">
-      			<input type="text" class="searchTerm" placeholder="What are you looking for?">
-      			<button type="submit" class="searchButton">
+      			<input type="text" class="searchTerm" id="searchTerm" placeholder="What are you looking for?" name="keyword">
+      			<button type="submit" class="searchButton" onclick="searchFunc()">
         			<i class="material-icons">search</i>
-     			</button>
+				</button>
+				<script>
+					function searchFunc() {
+						var text = document.getElementById("searchTerm").value;
+						window.open("http://localhost:3000/searchbar/search/?keyword=" + text);
+					}
+				</script>
    		  </div>
 		</div>
 <br>

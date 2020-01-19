@@ -8,31 +8,31 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 <script type="text/javascript">
-const fetchJson = async url => {
-    const response = await fetch(url)
-    return response.json()
-}
-async someFunc(){
-      const data = await fetchJson('//localhost:3030/searchbar/search?keyword=hiking')
-}
-    var data;
-$(document).ready(function () {
-    var html = '<table class="table table-striped">';
-    html += '<tr>';
-    var flag = 0;
-    $.each(data[0], function(index, value){
-        html += '<th>'+index+'</th>';
-    });
-    html += '</tr>';
-     $.each(data, function(index, value){
-         html += '<tr>';
-        $.each(value, function(index2, value2){
-            html += '<td>'+value2+'</td>';
-        });
+    const fetchJson = async url => {
+        const response = await fetch(url)
+        return response.json()
+    };
+    async someFunc() {
+        const data = await fetchJson('/Users/sangela/Desktop/Womxn20/back-end/db/output.json')
+    }
+        var data;
+    $(document).ready(function () {
+        var html = '<table class="table table-striped">';
         html += '<tr>';
-     });
-     html += '</table>';
-     $('body').html(html);
-});
+        var flag = 0;
+        $.each(data[0], function(index, value){
+            html += '<th>'+index+'</th>';
+        });
+        html += '</tr>';
+        $.each(data, function(index, value){
+            html += '<tr>';
+            $.each(value, function(index2, value2){
+                html += '<td>'+value2+'</td>';
+            });
+            html += '<tr>';
+        });
+        html += '</table>';
+        $('body').html(html);
+    });
 </script>
-\</html> 
+</html> 
